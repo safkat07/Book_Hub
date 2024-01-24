@@ -138,7 +138,7 @@ const SingleBooks = () => {
             <button
               className="btn  bg-orange-500 hover:rounded-full text-white"
               onClick={() => document.getElementById("my_modal_5").showModal()}
-              disabled={isBorrowButtonDisabled || bookQuantity == 0}
+              // disabled={isBorrowButtonDisabled || bookQuantity == 0}
             >
               Borrow Book
             </button>

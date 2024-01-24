@@ -12,13 +12,13 @@ const MainLayout = () => {
                 <Toaster></Toaster>
             </div>
             <div>
-            <Navbar></Navbar>
+                <Navbar></Navbar>
             </div>
-            <div className="min-h-screen max-w-[1200px] mx-auto">
-            <Outlet></Outlet>
+            <div>
+                <Outlet></Outlet>
             </div>
-            <Footer></Footer>
-            
+            {/* <Footer></Footer> */}
+
         </div>
     );
 };

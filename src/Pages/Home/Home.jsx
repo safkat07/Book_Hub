@@ -18,9 +18,11 @@ const Home = () => {
   console.log(bookCollection);
   return (
     <div className="">
+      <div>
       <Banner></Banner>
+      </div>
 
-      <h2 className="text-5xl font-bold text-orange-500 underline  text-center">
+      {/* <h2 className="text-5xl font-bold text-orange-500 underline  text-center">
         Book Categories
       </h2>
 
@@ -30,7 +32,7 @@ const Home = () => {
         ))}
       </div>
       <FeatureSection></FeatureSection>
-      <BookOfTheDaySection></BookOfTheDaySection>
+      <BookOfTheDaySection></BookOfTheDaySection> */}
     </div>
   );
 };

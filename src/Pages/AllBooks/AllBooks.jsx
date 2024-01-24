@@ -44,9 +44,7 @@ const AllBooks = () => {
         All Book Collection
       </h2>
       <div>
-        {/* <button onClick={toggleFilter}>
-          {filterActive ? "Show All Books" : "Show Available Books"}
-        </button> */}
+        
         <div>
           <label htmlFor="filterDropdown">Filter by:</label>
           <select
