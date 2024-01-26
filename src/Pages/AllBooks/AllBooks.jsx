@@ -43,8 +43,8 @@ const AllBooks = () => {
   return (
     <div>
       <HeadingText headText={"All Books"}></HeadingText>
-      <div>
-        {/* <div>
+      <div className="flex justify-center  divide-x-4">
+        <div className="w-[15vw] px-3">
           <label htmlFor="filterDropdown">Filter by:</label>
           <select
             id="filterDropdown"
@@ -55,18 +55,21 @@ const AllBooks = () => {
             <option value="available">Available Books</option>
             <option value="outOfStock">Out of Stock Books</option>
           </select>
-        </div> */}
-        {loading ? (
-          <div className="flex justify-center mt-52">
-            <Loader></Loader>
-          </div>
-        ) : (
-          <div className="flex flex-wrap justify-center gap-10">
-            {filteredBooks.map((book) => (
-              <ShowAllBooks book={book} key={book.id}></ShowAllBooks>
-            ))}
-          </div>
-        )}
+        </div>
+
+        <div className="w-full ">
+          {loading ? (
+            <div className="flex justify-center mt-52">
+              <Loader></Loader>
+            </div>
+          ) : (
+            <div className="flex  flex-wrap justify-center gap-10">
+              {filteredBooks.map((book) => (
+                <ShowAllBooks book={book} key={book.id}></ShowAllBooks>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
