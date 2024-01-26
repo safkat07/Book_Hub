@@ -46,7 +46,7 @@ const Navbar = () => {
         {/* icons div */}
         {/* Navigation Div */}
         <div className="lg:block hidden">
-          <ul className="flex bg-gradient-to-tl  xl:gap-x-7 gap-x-3 xl:text-2xl text-lg font-poppins  font-medium">
+          <ul className="flex bg-gradient-to-tl  xl:gap-x-7 gap-x-3 xl:text-xl text-lg font-poppins  font-medium">
             <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110">Home</li></Link>
             <Link to='/allbooks'><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110 ">All Books</li></Link>
             <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110">About Us</li></Link>

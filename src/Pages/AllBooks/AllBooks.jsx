@@ -45,12 +45,23 @@ const AllBooks = () => {
       <HeadingText headText={"All Books"}></HeadingText>
       <div className="flex justify-center  divide-x-4">
         <div className="w-[15vw] px-3">
-          <label htmlFor="filterDropdown">Filter by:</label>
+          {/* <label htmlFor="filterDropdown">Filter by:</label>
           <select
             id="filterDropdown"
             value={selectedFilter}
             onChange={handleFilterChange}
           >
+            <option value="all">All Books</option>
+            <option value="available">Available Books</option>
+            <option value="outOfStock">Out of Stock Books</option>
+          </select> */}
+          <p className="ml-2  font-poppins font-medium mb-2">Filter By Available Books</p>
+          <select
+            id="filterDropdown"
+            value={selectedFilter}
+            onChange={handleFilterChange}
+            className="select focus:outline-none font-poppins font-medium select-bordered w-full max-w-xs">
+            {/* <option disabled selected>All Books</option> */}
             <option value="all">All Books</option>
             <option value="available">Available Books</option>
             <option value="outOfStock">Out of Stock Books</option>
