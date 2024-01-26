@@ -1,5 +1,6 @@
 import  { useEffect, useState } from "react";
 import ShowAllBooks from "./ShowAllBooks";
+import HeadingText from "../../Components/Useable/HeadingText/HeadingText";
 
 const AllBooks = () => {
   const [allBook, setAllBook] = useState([]);
@@ -40,9 +41,7 @@ const AllBooks = () => {
 
   return (
     <div>
-      <h2 className="md:text-5xl text-3xl font-bold text-orange-500 underline text-center">
-        All Book Collection
-      </h2>
+      <HeadingText headText={"All Books"}></HeadingText>
       <div>
         
         <div>

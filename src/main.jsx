@@ -18,7 +18,8 @@ import ReadBooks from "./Components/SingleBooks/ReadBooks.jsx";
 import ShowBorrowedReadBook from "./Components/BorrowedBooks/ShowBorrowedReadBook .jsx";
 import PrivateRoute from "./Provider/PrivateRoute.jsx";
 import BorrowedBooks from "./Components/BorrowedBooks/BorrowedBooks.jsx";
-
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
@@ -96,8 +97,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

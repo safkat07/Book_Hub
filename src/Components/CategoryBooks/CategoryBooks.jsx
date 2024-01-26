@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import ShowBooks from "../ShowBooks/ShowBooks";
+import HeadingText from "../Useable/HeadingText/HeadingText";
 
 const CategoryBooks = () => {
   const [book, setBook] = useState([]);
@@ -18,13 +19,13 @@ const CategoryBooks = () => {
         setBook(filterBooks);
         setLoading(false); // Set loading to false when data is fetched
       });
-  }, [categoryName]); 
+  }, [categoryName]);
 
   return (
     <div>
-      <h2 className="md:text-5xl text-3xl font-bold text-orange-500 underline text-center">
-        Collection of : {categoryName}
-      </h2>
+      <p className="lg:text-6xl md:text-4xl text-3xl font-bold bg-gradient-to-tr from-indigo-400 via-red-300 to-sky-400 text-transparent bg-clip-text my-10 text-center">
+        Collection Of: {categoryName}
+      </p>
 
       {loading ? ( // Conditionally render the spinner while loading is true
         <div className="flex justify-center  mt-52 ">

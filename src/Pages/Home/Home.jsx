@@ -4,34 +4,48 @@ import BookOfTheDaySection from "../ExtraSections/BookOfTheDaySection";
 import FeatureSection from "../ExtraSections/FeatureSection";
 import { useState } from "react";
 import BookCollection from "../../Components/BookCollection/BookCollection";
+import UseAxiosBaseURL from "../../Hooks/UseAxiosBaseURL/UseAxiosBaseURL";
+import { useQuery } from "react-query";
+import Loader from "../../Components/Useable/Loader/Loader";
+import HeadingText from "../../Components/Useable/HeadingText/HeadingText";
 
 const Home = () => {
-  const [bookCollection, setBookCollection] = useState([]);
+  const baseURL = UseAxiosBaseURL()
+  const { isPending, status, isError, error, data: bookCollection } = useQuery({
+    queryKey: ['BookCollection'],
+    queryFn: async () => {
+      const res = await baseURL.get('api/v1/bookCollection')
+      return res.data
+    }
+  })
+  if (isPending) {
+    return <div className="flex justify-center items-center">
+      <Loader></Loader>
+    </div>
+  }
+  if (isError) {
+    return <p className="text-5xl font-semibold font-poppins text-center text-red-700">{error.message}</p>
+  }
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/v1/bookCollection")
-      .then((res) => res.json())
-      .then((data) => {
-        setBookCollection(data);
-      });
-  }, []);
-  console.log(bookCollection);
   return (
     <div className="">
       <div>
-      <Banner></Banner>
+        <Banner></Banner>
       </div>
 
-      {/* <h2 className="text-5xl font-bold text-orange-500 underline  text-center">
+
+      <p className="lg:text-6xl md:text-4xl text-3xl font-bold bg-gradient-to-tr from-indigo-400 via-red-300 to-sky-400 text-transparent bg-clip-text xl:mt-36 lg:my-24 md:mt-40 md:mb-10  mt-24 mb-10 text-center">
         Book Categories
-      </h2>
+      </p>
 
-      <div className="my-16 gap-5 grid grid-cols-1 lg:grid-cols-2">
-        {bookCollection.map((book) => (
-          <BookCollection key={book.id} book={book}></BookCollection>
-        ))}
-      </div>
-      <FeatureSection></FeatureSection>
+      {
+        <div className="flex flex-wrap justify-center items-center gap-x-20 ">
+          {bookCollection?.map((book) => (
+            <BookCollection key={book._id} book={book}></BookCollection>
+          ))}
+        </div>
+      }
+      {/* <FeatureSection></FeatureSection>
       <BookOfTheDaySection></BookOfTheDaySection> */}
     </div>
   );

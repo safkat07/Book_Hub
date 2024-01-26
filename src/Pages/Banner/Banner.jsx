@@ -57,16 +57,16 @@ const Banner = () => {
 
     // </section>
     <section className="bg h-screen">
-      <div className="max-w-[1380px]   absolute xl:top-[20%] md:top-20 top-20 right-0 left-0 bottom-0 mx-auto">
-        <div className="flex w-full md:flex-row flex-col justify-center gap-x-20 items-center">
+      <div className="max-w-[1380px]  md:text-left text-center absolute xl:top-[20%] md:top-32 top-28 right-0 left-0 bottom-0 mx-auto">
+        <div className="flex w-full md:flex-row flex-col-reverse justify-center gap-x-20 items-center">
           <div className=" text-black md:w-1/3 w-full md:px-0 px-4 font-semibold font-montserrat">
-            <p className="md:text-4xl text-2xl font-bold">
+            <p className="lg:text-4xl  md:text-2xl text-lg font-bold">
               {bookTitle}
             </p>
-            <p className="font-semibold font-poppins text-white bg-gradient-to-r  from-orange-500 to-80%  py-2 px-2 rounded-xl w-3/4 md:text-2xl text-xl mt-2">
+            <p className="font-semibold font-poppins text-white bg-gradient-to-r  from-orange-500 to-80%  py-2 px-2 rounded-xl lg:w-3/4  lg:text-2xl md:text-xl mt-2">
               {bookAuthor}
             </p>
-            <p className="md:text-xl mt-4">
+            <p className="md:text-xl text-sm mt-4">
               {bookDescription}
             </p>
             {/* <Link to='/register'>
@@ -76,17 +76,17 @@ const Banner = () => {
 
           </div>
           <div className="">
-            <img className="md:w-80 w-60 md:h-[500px] rounded-bl-[5rem] rounded-tr-[5rem] rounded-xl " src={bookID} alt="" />
+            <img className="xl:w-80 md:w-60 w-40 xl:h-[500px]  rounded-bl-[5rem] rounded-tr-[5rem] rounded-xl " src={bookID} alt="" />
           </div>
           {/* little img listt */}
 
         </div>
-        <div className=" max-w-[690px]  xl:mt-2 mt-0    mx-auto">
-          <div className="space-y-2 flex md:mr-12 justify-center gap-x-5">
+        <div className=" max-w-[690px]  xl:mt-2 lg:mt-14 md:mt-10 mt-0    mx-auto">
+          <div className="space-y-2 flex md:mr-12 justify-center md:gap-x-5 gap-x-2">
             {
               ImgList.map(data => (
                 <img key={data.id} src={data.img}
-                  className="md:max-w-[120px] max-w-[70px] rounded-xl cursor-pointer hover:scale-105 duration-500  max-h-[200px]"
+                  className="lg:max-w-[120px] md:max-w-[100px] max-w-[85px] rounded-xl rounded-tl-[1.9rem] hover:rounded-tl-lg rounded-br-[1.9rem] hover:rounded-br-lg hover:rounded-bl-[3.5rem] hover:rounded-tr-[3.5rem] cursor-pointer hover:scale-105 duration-500  max-h-[200px]"
                   onClick={() => {
                     setBookID(
                       data.id === 1 ? img1 :
