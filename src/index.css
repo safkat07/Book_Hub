@@ -5,3 +5,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+/* body{
+    background: linear-gradient(to right top, #0ecde0, #4bfd83);
+} */

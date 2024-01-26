@@ -1,47 +1,42 @@
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
-
+import ReactStars from "react-rating-stars-component";
 const ShowAllBooks = ({ book }) => {
-  const { bookName, _id, photo, quantity, rating, authorName, bookCategory } =
-    book;
+  const { bookName, _id, photo, quantity, rating, authorName, bookCategory } = book;
+
+  const divStyle = {
+    backgroundImage: `url(${photo})`,
+    backgroundSize: 'cover', // Adjust as needed
+    backgroundPosition: 'center', // Adjust as needed
+    width: '300px', // Example width
+    height: '400px', // Example height
+  };
+
   return (
-    // <div className="my-10 flex justify-center">
-    //   <div className="card card-compact w-80 bg-base-100 shadow-xl">
-    //     <figure>
-    //       <img className=" h-80 w-96" src={photo} alt="Shoes" />
-    //     </figure>
-    //     <div className="card-body">
-    //       <h2 className="card-title">Book Title: {bookName}</h2>
-    //       <h2 className="card-title">Author Nmae: {authorName}</h2>
-    //       <h2 className="card-title">Book Category: {bookCategory}</h2>
-    //       <h2 className="card-title">Book Quantity: {quantity}</h2>
-    //       <h2 className="card-title">
-    //         Book Rating:
-    //         <Rating initialRating={rating} readonly />
-    //       </h2>
-
-    //       <div className="card-actions justify-start">
-    //         <Link to={`/singlebooks/${_id}`}>
-    //           <button className="btn  hover:rounded-full bg-orange-500 hover:bg-stone-500">
-    //             Book Details
-    //           </button>
-    //         </Link>
-    //         <Link to={`/updatebooks/${_id}`}>
-    //           <button className="btn  hover:rounded-full bg-sky-500 hover:bg-stone-500">
-    //             Update Books
-    //           </button>
-    //         </Link>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-    <div className="wrap">
-      <div className="container">
-      <div className="coloumn">
-
-      </div>
+    <div className="flex items-center justify-center">
+      <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+        <div className="h-96 w-72">
+          <img className="h-full w-full brightness-75 object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125" src={photo} alt="" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
+        <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0">
+          <h1 className="font-poppins text-2xl  text-center  font-bold text-white">{bookName}</h1>
+          <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{bookCategory}</p>
+          <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{authorName}</p>
+          <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{quantity} Books Available</p>
+          <ReactStars
+            count={rating}
+            value={rating}
+            size={24}
+            activeColor="#ffd700"
+          />,
+          <Link>
+            <button className="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize text-white shadow shadow-black/60">Details</button>
+          </Link>
+        </div>
       </div>
     </div>
+
   );
 };
 

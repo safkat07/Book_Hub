@@ -1,15 +1,16 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ShowAllBooks from "./ShowAllBooks";
 import HeadingText from "../../Components/Useable/HeadingText/HeadingText";
+import Loader from "../../Components/Useable/Loader/Loader";
 
 const AllBooks = () => {
   const [allBook, setAllBook] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedFilter, setSelectedFilter] = useState("all"); 
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
 
   const url = "http://localhost:5000/api/v1/addedBooks"
-  
+
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -43,8 +44,7 @@ const AllBooks = () => {
     <div>
       <HeadingText headText={"All Books"}></HeadingText>
       <div>
-        
-        <div>
+        {/* <div>
           <label htmlFor="filterDropdown">Filter by:</label>
           <select
             id="filterDropdown"
@@ -55,13 +55,13 @@ const AllBooks = () => {
             <option value="available">Available Books</option>
             <option value="outOfStock">Out of Stock Books</option>
           </select>
-        </div>
+        </div> */}
         {loading ? (
           <div className="flex justify-center mt-52">
-            <span className="loading flex loading-spinner loading-lg"></span>
+            <Loader></Loader>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="flex flex-wrap justify-center gap-10">
             {filteredBooks.map((book) => (
               <ShowAllBooks book={book} key={book.id}></ShowAllBooks>
             ))}
