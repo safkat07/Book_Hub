@@ -49,9 +49,9 @@ const AllBooks = () => {
     if (searchQuery && !book.bookName.toLowerCase().includes(searchQuery)) {
       return false;
     }
-    const intDBrating =  parseInt(book.rating)
-    
-    if(Userrating !== 0 &&  Userrating != intDBrating){
+    const intDBrating = parseInt(book.rating)
+
+    if (Userrating !== 0 && Userrating != intDBrating) {
       return false
     }
 
@@ -93,6 +93,43 @@ const AllBooks = () => {
               <option value="outOfStock">Out of Stock Books</option>
             </select>
           </div>
+          <div>
+            <p className="ml-2 font-poppins my-4 font-medium mb-2">Find Books By Language</p>
+            <select
+              id="filterDropdown"
+              value={selectedFilter}
+              onChange={handleFilterChange}
+              className="select focus:outline-none font-poppins font-medium select-bordered w-full xl:max-w-xs"
+            >
+              <option value="all">Any Language</option>
+              <option value="English">English</option>
+              <option value="Bengali">Bengali</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Urdu">Urdu</option>
+              <option value="Marathi">Marathi</option>
+              <option value="Tamil">Tamil</option>
+              <option value="Russian">Russian</option>
+              <option value="Spanish">Spanish</option>
+              <option value="Arabic">Arabic</option>
+              <option value="French">French</option>
+              <option value="Korean">Korean</option>
+              <option value="Italian">Italian</option>
+              <option value="Indonesian">Indonesian</option>
+              <option value="German">German</option>
+              <option value="Portuguese">Portuguese</option>
+              <option value="Dutch">Dutch</option>
+              <option value="Swahili">Swahili</option>
+              <option value="Swedish">Swedish</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Greek">Greek</option>
+              <option value="Turkish">Turkish</option>
+              <option value="Polish">Polish</option>
+              <option value="Thai">Thai</option>
+              <option value="Vietnamese">Vietnamese</option>
+
+            </select>
+          </div>
           {/* rating */}
           <div className="flex flex-col my-4  justify-center">
             <p className="ml-2 font-poppins font-medium ">Filter By Ratings</p>
@@ -108,6 +145,8 @@ const AllBooks = () => {
               </div>
             </div>
           </div>
+
+
         </div>
 
         <div className="w-full">
