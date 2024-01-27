@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 import ShowAllBooks from "./ShowAllBooks";
 import HeadingText from "../../Components/Useable/HeadingText/HeadingText";
 import Loader from "../../Components/Useable/Loader/Loader";
@@ -8,7 +10,10 @@ const AllBooks = () => {
   const [loading, setLoading] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [noBooksFound, setNoBooksFound] = useState(false); // New state to track if no books are found
+  const [Userrating, setUSerRating] = useState(0);
+  console.log(typeof (Userrating));
+  console.log((Userrating));
   const url = "http://localhost:5000/api/v1/addedBooks";
 
   useEffect(() => {
@@ -28,6 +33,9 @@ const AllBooks = () => {
     setSearchQuery(event.target.value.toLowerCase());
   };
 
+
+
+
   const filteredBooks = allBooks.filter((book) => {
     // Apply filter based on selected option
     if (selectedFilter === "available" && book.quantity <= 0) {
@@ -41,15 +49,26 @@ const AllBooks = () => {
     if (searchQuery && !book.bookName.toLowerCase().includes(searchQuery)) {
       return false;
     }
+    const intDBrating =  parseInt(book.rating)
+    
+    if(Userrating !== 0 &&  Userrating != intDBrating){
+      return false
+    }
 
     return true;
   });
 
+
+  useEffect(() => {
+    // Check if no books are found after filtering
+    setNoBooksFound(filteredBooks.length === 0 && !loading);
+  }, [filteredBooks, loading,]);
+
   return (
     <div>
       <HeadingText headText={"All Books"}></HeadingText>
-      <div className="flex justify-center my-10 divide-x-4">
-        <div className="w-[15vw] h-screen px-3">
+      <div className="flex xl:flex-row flex-col justify-center md:my-10 xl:gap-y-0 gap-y-10 md:divide-x-4">
+        <div className="2xl:w-[15vw] xl:w-[20vw]   w-[100vw]  xl:h-screen px-3">
           <div className="my-4">
             {/* Search option */}
             <p className="ml-2 font-poppins font-medium mb-2">Search Books By Name</p>
@@ -58,7 +77,7 @@ const AllBooks = () => {
               name="searchText"
               type="text"
               placeholder="Search Books"
-              className="input focus:outline-none input-bordered input-md w-full max-w-xs"
+              className="input focus:outline-none input-bordered input-md w-full xl:max-w-xs "
             />
           </div>
           <div>
@@ -67,12 +86,27 @@ const AllBooks = () => {
               id="filterDropdown"
               value={selectedFilter}
               onChange={handleFilterChange}
-              className="select focus:outline-none font-poppins font-medium select-bordered w-full max-w-xs"
+              className="select focus:outline-none font-poppins font-medium select-bordered w-full xl:max-w-xs"
             >
               <option value="all">All Books</option>
               <option value="available">Available Books</option>
               <option value="outOfStock">Out of Stock Books</option>
             </select>
+          </div>
+          {/* rating */}
+          <div className="flex flex-col my-4  justify-center">
+            <p className="ml-2 font-poppins font-medium ">Filter By Ratings</p>
+            <div className="flex justify-center scale-125">
+              <div style={{ maxWidth: 130, width: '100%', marginTop: '.7rem' }}>
+                <Rating
+                  value={Userrating}
+                  onChange={setUSerRating}
+                />
+                <button className="text-xs font-poppins px-2 py-1 ml-1 rounded-md text-white bg-red-400" type="button" onClick={() => setUSerRating(0)}>
+                  Reset
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -81,12 +115,16 @@ const AllBooks = () => {
             <div className="flex justify-center ">
               <Loader></Loader>
             </div>
-          ) : (
-            <div className="flex flex-wrap justify-center gap-10">
+          ) : filteredBooks.length > 0 ? ( // Check if there are filtered books to display
+            <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2  gap-y-8">
               {filteredBooks.map((book) => (
-                <ShowAllBooks book={book} key={book.id}></ShowAllBooks>
+                <ShowAllBooks book={book} key={book._id}></ShowAllBooks>
               ))}
             </div>
+          ) : (
+            <div><p className="text-center font-montserrat text-5xl text-red-800 font-semibold flex justify-center mt-16">
+              No books found. Try Again!!
+            </p></div> // Display message when no books are found
           )}
         </div>
       </div>
