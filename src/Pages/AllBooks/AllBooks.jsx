@@ -13,6 +13,7 @@ const AllBooks = () => {
   const [noBooksFound, setNoBooksFound] = useState(false); // New state to track if no books are found
   const [Userrating, setUSerRating] = useState(0);
   const [selectedLanguage, setSelectedLanguage] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState("all")
 
   const url = "http://localhost:5000/api/v1/addedBooks";
 
@@ -36,8 +37,10 @@ const AllBooks = () => {
   const handleFilterLanguage = (e) => {
     setSelectedLanguage(e.target.value)
   }
-  // console.log(selectedLanguage);
 
+  const handleBookCategory = (e) => {
+    setSelectedCategory(e.target.value)
+  }
 
 
 
@@ -63,6 +66,9 @@ const AllBooks = () => {
     //apply book language filter
 
     if (selectedLanguage != "all" && selectedLanguage != book.bookLanguage) {
+      return false
+    }
+    if (selectedCategory != "all" && selectedCategory != book.bookCategory) {
       return false
     }
 
@@ -148,8 +154,8 @@ const AllBooks = () => {
             <p className="ml-2  my-4 font-poppins font-medium mb-2">Filter By Available Books</p>
             <select
               id="filterDropdown"
-              value={selectedFilter}
-              onChange={handleFilterChange}
+              value={selectedCategory}
+              onChange={handleBookCategory}
               className="select focus:outline-none font-poppins font-medium select-bordered w-full xl:max-w-xs"
             >
               <option value="all">All Category</option>
