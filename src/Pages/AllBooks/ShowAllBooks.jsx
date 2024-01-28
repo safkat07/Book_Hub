@@ -2,7 +2,7 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 const ShowAllBooks = ({ book }) => {
-  const { bookName, _id, photo, quantity, bookLanguage , rating, authorName, bookCategory } = book;
+  const { bookName, _id, photo, quantity, bookLanguage, rating, authorName, bookCategory } = book;
 
   const divStyle = {
     backgroundImage: `url(${photo})`,

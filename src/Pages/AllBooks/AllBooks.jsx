@@ -72,10 +72,15 @@ const AllBooks = () => {
       return false
     }
 
-
-
     return true;
   });
+  const clearAllFilters = () => {
+    setSelectedFilter("all");
+    setSearchQuery("");
+    setUSerRating(0);
+    setSelectedLanguage("all");
+    setSelectedCategory("all");
+  };
 
 
   useEffect(() => {
@@ -171,7 +176,7 @@ const AllBooks = () => {
           {/* rating */}
           <div className="flex flex-col my-4  justify-center">
             <p className="ml-2 font-poppins font-medium ">Filter By Ratings</p>
-            <div className="flex justify-center scale-125">
+            <div className="flex ml-6 justify-start scale-125">
               <div style={{ maxWidth: 130, width: '100%', marginTop: '.7rem' }}>
                 <Rating
                   value={Userrating}
@@ -183,7 +188,16 @@ const AllBooks = () => {
               </div>
             </div>
           </div>
-
+          {/* clear all filter */}
+          <div className="flex justify-start items-center ">
+            <button
+              className="font-poppins px-2 py-1 ml-1 max-w-xl rounded-md text-white hover:scale-105 transition-all duration-200 bg-lime-600"
+              type="button"
+              onClick={clearAllFilters}
+            >
+              Clear All Filters
+            </button>
+          </div>
 
         </div>
 
