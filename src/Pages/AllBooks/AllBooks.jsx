@@ -93,8 +93,8 @@ const AllBooks = () => {
       <HeadingText headText={"All Books"}></HeadingText>
       <div className="flex xl:flex-row flex-col justify-center md:my-10 xl:gap-y-0 gap-y-10 md:divide-x-4">
         <div className="2xl:w-[15vw] xl:w-[20vw]   w-[100vw]  xl:h-screen px-3">
+          {/* Search option */}
           <div className="my-4">
-            {/* Search option */}
             <p className="ml-2 font-poppins font-medium mb-2">Search Books By Name</p>
             <input
               onChange={handleSearchChange}
@@ -176,22 +176,25 @@ const AllBooks = () => {
           {/* rating */}
           <div className="flex flex-col my-4  justify-center">
             <p className="ml-2 font-poppins font-medium ">Filter By Ratings</p>
-            <div className="flex ml-6 justify-start scale-125">
+            <div className="flex ml-6 xl:justify-start justify-center xl:scale-125">
               <div style={{ maxWidth: 130, width: '100%', marginTop: '.7rem' }}>
                 <Rating
                   value={Userrating}
                   onChange={setUSerRating}
                 />
-                <button className="text-xs font-poppins px-2 py-1 ml-1 rounded-md text-white bg-red-400" type="button" onClick={() => setUSerRating(0)}>
-                  Reset
-                </button>
+                <div className="flex xl:justify-start mt-2 justify-center">
+                  <button className="text-xs font-poppins  px-2 py-1 ml-1 rounded-md text-white bg-red-400" type="button" onClick={() => setUSerRating(0)}>
+                    Reset
+                  </button>
+                </div>
+
               </div>
             </div>
           </div>
           {/* clear all filter */}
-          <div className="flex justify-start items-center ">
+          <div className="flex xl:justify-start justify-center  items-center ">
             <button
-              className="font-poppins px-2 py-1 ml-1 max-w-xl rounded-md text-white hover:scale-105 transition-all duration-200 bg-lime-600"
+              className="font-poppins px-2 py-1 xl:ml-1 ml-9  rounded-md text-white hover:scale-105 transition-all duration-200 bg-lime-600"
               type="button"
               onClick={clearAllFilters}
             >

@@ -14,7 +14,7 @@ const ShowAllBooks = ({ book }) => {
 
   return (
     <div className="flex items-center   justify-center">
-      <div className="group relative  rounded-tl-[1.9rem] rounded-xl hover:scale-105  transition-all duration-1000 rounded-bl-[1.9rem]    cursor-pointer items-center justify-center overflow-hidden hover:shadow-xl hover:shadow-black/30">
+      <div className="group relative  rounded-tl-[1.9rem] rounded-xl XL:hover:scale-105  transition-all duration-1000 rounded-bl-[1.9rem]    cursor-pointer items-center justify-center overflow-hidden hover:shadow-xl hover:shadow-black/30">
         <div className="h-96  w-72">
           <img className="h-full w-full  brightness-75 object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125" src={photo} alt="" />
         </div>
