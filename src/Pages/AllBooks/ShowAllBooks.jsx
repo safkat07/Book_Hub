@@ -2,7 +2,7 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 const ShowAllBooks = ({ book }) => {
-  const { bookName, _id, photo, quantity, rating, authorName, bookCategory } = book;
+  const { bookName, _id, photo, quantity, bookLanguage , rating, authorName, bookCategory } = book;
 
   const divStyle = {
     backgroundImage: `url(${photo})`,
@@ -14,7 +14,7 @@ const ShowAllBooks = ({ book }) => {
 
   return (
     <div className="flex items-center   justify-center">
-      <div className="group relative  rounded-tl-[1.9rem] rounded-xl hover:rounded-tl-lg transition-all duration-1000 rounded-br-[1.9rem] hover:rounded-br-lg hover:rounded-bl-[3.5rem] hover:rounded-tr-[3.5rem]    cursor-pointer items-center justify-center overflow-hidden hover:shadow-xl hover:shadow-black/30">
+      <div className="group relative  rounded-tl-[1.9rem] rounded-xl hover:scale-105  transition-all duration-1000 rounded-bl-[1.9rem]    cursor-pointer items-center justify-center overflow-hidden hover:shadow-xl hover:shadow-black/30">
         <div className="h-96  w-72">
           <img className="h-full w-full  brightness-75 object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125" src={photo} alt="" />
         </div>
@@ -24,6 +24,7 @@ const ShowAllBooks = ({ book }) => {
           <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{bookCategory}</p>
           <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{authorName}</p>
           <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">{quantity} Books Available</p>
+          <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">Language: {bookLanguage}</p>
           <ReactStars
             count={rating}
             value={rating}

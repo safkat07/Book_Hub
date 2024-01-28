@@ -12,8 +12,8 @@ const AllBooks = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [noBooksFound, setNoBooksFound] = useState(false); // New state to track if no books are found
   const [Userrating, setUSerRating] = useState(0);
-  console.log(typeof (Userrating));
-  console.log((Userrating));
+  const [selectedLanguage, setSelectedLanguage] = useState("all")
+
   const url = "http://localhost:5000/api/v1/addedBooks";
 
   useEffect(() => {
@@ -32,6 +32,11 @@ const AllBooks = () => {
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value.toLowerCase());
   };
+
+  const handleFilterLanguage = (e) => {
+    setSelectedLanguage(e.target.value)
+  }
+  // console.log(selectedLanguage);
 
 
 
@@ -54,6 +59,14 @@ const AllBooks = () => {
     if (Userrating !== 0 && Userrating != intDBrating) {
       return false
     }
+
+    //apply book language filter
+
+    if (selectedLanguage != "all" && selectedLanguage != book.bookLanguage) {
+      return false
+    }
+
+
 
     return true;
   });
@@ -97,8 +110,8 @@ const AllBooks = () => {
             <p className="ml-2 font-poppins my-4 font-medium mb-2">Find Books By Language</p>
             <select
               id="filterDropdown"
-              value={selectedFilter}
-              onChange={handleFilterChange}
+              value={selectedLanguage}
+              onChange={handleFilterLanguage}
               className="select focus:outline-none font-poppins font-medium select-bordered w-full xl:max-w-xs"
             >
               <option value="all">Any Language</option>
@@ -127,6 +140,25 @@ const AllBooks = () => {
               <option value="Polish">Polish</option>
               <option value="Thai">Thai</option>
               <option value="Vietnamese">Vietnamese</option>
+
+            </select>
+          </div>
+          {/* book categories */}
+          <div>
+            <p className="ml-2  my-4 font-poppins font-medium mb-2">Filter By Available Books</p>
+            <select
+              id="filterDropdown"
+              value={selectedFilter}
+              onChange={handleFilterChange}
+              className="select focus:outline-none font-poppins font-medium select-bordered w-full xl:max-w-xs"
+            >
+              <option value="all">All Category</option>
+              <option value="Novel">Novel</option>
+              <option value="Thriller">Thriller</option>
+              <option value="History">History</option>
+              <option value="Drama">Drama</option>
+              <option value="Biography">Biography</option>
+              <option value="Horror">Horror</option>
 
             </select>
           </div>

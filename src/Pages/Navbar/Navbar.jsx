@@ -47,14 +47,14 @@ const Navbar = () => {
         {/* Navigation Div */}
         <div className="lg:block hidden">
           <ul className="flex bg-gradient-to-tl  xl:gap-x-7 gap-x-3 xl:text-xl text-lg font-poppins  font-medium">
-            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110">Home</li></Link>
-            <Link to='/allbooks'><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110 ">All Books</li></Link>
-            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110">About Us</li></Link>
-            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110">Contacts</li></Link>
-            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-110">Login</li></Link>
+            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-105">Home</li></Link>
+            <Link to='/allbooks'><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-105 ">All Books</li></Link>
+            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-105">About Us</li></Link>
+            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-105">Contacts</li></Link>
+            <Link><li className="  hover:text-indigo-500  transition-all duration-700 hover:scale-105">Login</li></Link>
           </ul>
         </div>
-         {/* Navigation Div */} 
+        {/* Navigation Div */}
         {/* Social Icons */}
         <div className="lg:flex font-montserrat font-semibold text-xl items-center justify-center gap-x-3 hidden">
           <Link to='/login'>
