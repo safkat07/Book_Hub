@@ -43,7 +43,7 @@ const ImgList = [
 const Banner = () => {
   // chnage book img
   const [bookID, setBookID] = useState(img1)
-  const [bookTitle, setBookTitle] = useState("The Girl With The Dragon Tatto")
+  const [bookTitle, setBookTitle] = useState("The Girl with the Dragon Tattoo")
   const [bookDescription, setBookDescription] = useState("A gripping mystery thriller that follows investigative journalist Mikael Blomkvist and hacker Lisbeth Salander as they uncover dark secrets and conspiracies.")
   const [bookAuthor, setBookAuthor] = useState("Stieg Larsson")
   return (

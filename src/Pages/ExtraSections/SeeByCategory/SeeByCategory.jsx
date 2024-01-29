@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import UseAllBooks from '../../../Hooks/UseAllBooks/UseAllBooks';
 import UseTabPanel from '../../../Hooks/UseTabPanel/UseTabPanel';
+import Loader from '../../../Components/Useable/Loader/Loader';
 
 const SeeByCategory = () => {
     const [tabIndex, setTabIndex] = useState(0)
@@ -15,32 +16,43 @@ const SeeByCategory = () => {
     return (
         <section className='my-16'>
             <HeadingText headText={"Popular Books"}></HeadingText>
-            <p className="text-center font-poppins my-2  w-1/2 m-auto" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam a ea sequi dolorum ipsam suscipit, sint repudiandae non aspernatur beatae!</p>
-            <div className='font-poppins  flex justify-center items-center mt-5'>
-                <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                    <TabList>
-                        <Tab>All Books</Tab>
-                        <Tab>Novel</Tab>
-                        <Tab>Thriller</Tab>
-                        <Tab>History</Tab>
-                        <Tab>Drama</Tab>
-                    </TabList>
-                    <TabPanel>
-                        <UseTabPanel category={allBooks}></UseTabPanel>
-                    </TabPanel>
-                    <TabPanel>
-                        <UseTabPanel category={Novel}></UseTabPanel>
-                    </TabPanel>
-                    <TabPanel>
-                        <UseTabPanel category={Thriller}></UseTabPanel>
-                    </TabPanel>
-                    <TabPanel>
-                        <UseTabPanel category={History}></UseTabPanel>
-                    </TabPanel>
-                    <TabPanel>
-                        <UseTabPanel category={Drama}></UseTabPanel>
-                    </TabPanel>
-                </Tabs>
+            <p className="text-center font-poppins my-2  w-1/2 m-auto" >Discover bestselling and timeless literary treasures in our popular books section – where every page turns into an unforgettable journey</p>
+            <div className='font-poppins  mt-5'>
+                <div className=''>
+                    <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+                        <TabList className="text-center ">
+                            <Tab>All Books</Tab>
+                            <Tab>Novel</Tab>
+                            <Tab>Thriller</Tab>
+                            <Tab>History</Tab>
+                            <Tab>Drama</Tab>
+                        </TabList>
+                        {isLoading ? (
+
+                            <div className='flex justify-center my-20 items-center'>
+                                <Loader></Loader>
+                            </div>
+                        ) : (
+                            <>
+                                <TabPanel>
+                                    <UseTabPanel category={allBooks}></UseTabPanel>
+                                </TabPanel>
+                                <TabPanel>
+                                    <UseTabPanel category={Novel}></UseTabPanel>
+                                </TabPanel>
+                                <TabPanel>
+                                    <UseTabPanel category={Thriller}></UseTabPanel>
+                                </TabPanel>
+                                <TabPanel>
+                                    <UseTabPanel category={History}></UseTabPanel>
+                                </TabPanel>
+                                <TabPanel>
+                                    <UseTabPanel category={Drama}></UseTabPanel>
+                                </TabPanel>
+                            </>
+                        )}
+                    </Tabs>
+                </div>
             </div>
         </section>
     );

@@ -60,21 +60,39 @@ const Navbar = () => {
             <NavLink to='/contact' className={({ isActive }) =>
               isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
             }>Contacts </NavLink>
-            <NavLink to='/contact' className={({ isActive }) =>
-              isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
-            }>Login </NavLink>
+            {
+              user ? <li 
+              onClick={handleSingout}
+              className="hover:text-indigo-500 cursor-pointer  transition-all duration-700 hover:scale-105"
+
+              >LogOut</li>
+                :
+                <NavLink to='/login' className={({ isActive }) =>
+                  isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
+                }>Login </NavLink>
+            }
+
+
           </ul>
         </div>
         {/* Navigation Div */}
         {/* Social Icons */}
-        <div className="lg:flex font-montserrat font-semibold text-xl items-center justify-center gap-x-3 hidden">
-          <NavLink to='/login'>
-            <button className="border-2 border-black 2xl:px-7 xl:px-5 px-4  xl:py-1.5 py-1 rounded-md">Login</button>
-          </NavLink>
-          <NavLink to='/register'>
-            <button className="border-2 border-black 2xl:px-5 xl:px-3 px-2 xl:py-1.5 py-1 bg-black text-white rounded-md">Sign-up</button>
-          </NavLink>
-        </div>
+        {
+          user ?
+            <div className="lg:block hidden">
+              <p className="hover:text-indigo-500 text-2xl font-poppins font-medium transition-all duration-700 hover:scale-105">Hello, {user.displayName}</p>
+            </div>
+            :
+            <div className="lg:flex font-montserrat font-semibold text-xl items-center justify-center gap-x-3 hidden">
+              <NavLink to='/login'>
+                <button className="border-2 border-black 2xl:px-7 xl:px-5 px-4  xl:py-1.5 py-1 rounded-md">Login</button>
+              </NavLink>
+              <NavLink to='/register'>
+                <button className="border-2 border-black 2xl:px-5 xl:px-3 px-2 xl:py-1.5 py-1 bg-black text-white rounded-md">Sign-up</button>
+              </NavLink>
+            </div>
+        }
+
         {/* Social Icons */}
         {/* respnsive deisgn */}
         <div className="block lg:hidden">
