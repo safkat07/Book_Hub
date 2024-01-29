@@ -91,8 +91,8 @@ const AllBooks = () => {
   return (
     <div>
       <HeadingText headText={"All Books"}></HeadingText>
-      <div className="flex xl:flex-row flex-col justify-center md:my-10 xl:gap-y-0 gap-y-10 md:divide-x-4">
-        <div className="2xl:w-[15vw] xl:w-[20vw]   w-[100vw]  xl:h-screen px-3">
+      <div className="flex xl:flex-row flex-col items-start justify-center  xl:gap-y-0  gap-y-10 ">
+        <div className="2xl:w-[15vw] xl:w-[20vw] xl:sticky xl:top-0 xl:bg-gradient-to-t  from-pink-200 via-indigo-200 to-gray-200 to-50% rounded-lg w-[100dvw]  xl:min-h-[100dvh] px-3">
           {/* Search option */}
           <div className="my-4">
             <p className="ml-2 font-poppins font-medium mb-2">Search Books By Name</p>

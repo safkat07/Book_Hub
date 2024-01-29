@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { GrFormNextLink } from 'react-icons/gr';
-
-
 const BookCollection = ({ book }) => {
   const { image, categoryName, _id, categoryDetails } = book
   return (
@@ -44,6 +42,7 @@ const BookCollection = ({ book }) => {
         </div>
       </section>
     </Link>
+
   );
 };
 

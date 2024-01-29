@@ -39,14 +39,14 @@ const Home = () => {
       </p>
 
       {
-        <div className="flex flex-wrap justify-center items-center gap-x-20 ">
+        <div id="categories" className="flex flex-wrap   justify-center items-center gap-x-20 ">
           {bookCollection?.map((book) => (
             <BookCollection key={book._id} book={book}></BookCollection>
           ))}
         </div>
       }
-      {/* <FeatureSection></FeatureSection>
-      <BookOfTheDaySection></BookOfTheDaySection> */}
+      <FeatureSection></FeatureSection>
+      {/* <BookOfTheDaySection></BookOfTheDaySection> */}
     </div>
   );
 };

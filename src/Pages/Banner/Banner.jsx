@@ -56,7 +56,7 @@ const Banner = () => {
     // <section>
 
     // </section>
-    <section className="bg h-screen">
+    <section className="bg  h-screen">
       <div className="max-w-[1380px]  md:text-left text-center absolute xl:top-[20%] md:top-32 top-28 right-0 left-0 bottom-0 mx-auto">
         <div className="flex w-full md:flex-row flex-col-reverse justify-center gap-x-20 items-center">
           <div className=" text-black md:w-1/3 w-full md:px-0 px-4 font-semibold font-montserrat">
