@@ -8,6 +8,7 @@ import UseAxiosBaseURL from "../../Hooks/UseAxiosBaseURL/UseAxiosBaseURL";
 import { useQuery } from "react-query";
 import Loader from "../../Components/Useable/Loader/Loader";
 import HeadingText from "../../Components/Useable/HeadingText/HeadingText";
+import SeeByCategory from "../ExtraSections/SeeByCategory/SeeByCategory";
 
 const Home = () => {
   const baseURL = UseAxiosBaseURL()
@@ -46,6 +47,7 @@ const Home = () => {
         </div>
       }
       <FeatureSection></FeatureSection>
+      <SeeByCategory></SeeByCategory>
       {/* <BookOfTheDaySection></BookOfTheDaySection> */}
     </div>
   );

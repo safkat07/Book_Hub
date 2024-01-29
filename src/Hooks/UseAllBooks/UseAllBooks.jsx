@@ -15,4 +15,4 @@ const UseAllBooks = () => {
     return [allBooks, isLoading]
 };
 
-export default UseAllBooks;
+export default UseAllBooks

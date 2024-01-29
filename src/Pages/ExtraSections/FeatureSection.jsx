@@ -29,7 +29,7 @@ const FeatureSection = () => {
       <p className="text-center font-poppins my-2  w-1/2 m-auto" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam a ea sequi dolorum ipsam suscipit, sint repudiandae non aspernatur beatae!</p>
       <div>
         {
-          isLoading ? <div>
+          isLoading ? <div className="flex justify-center items-center scale-125">
             <Loader></Loader>
           </div>
             :
