@@ -59,9 +59,9 @@ const Navbar = () => {
             <NavLink to='/addbooks' className={({ isActive }) =>
               isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
             }>Add Books</NavLink>
-            <NavLink to='/borrowedbook' className={({ isActive }) =>
+            {/* <NavLink to='/borrowedbook' className={({ isActive }) =>
               isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
-            }>Borrowed Books </NavLink>
+            }>Borrowed Books </NavLink> */}
             {
               user ? <li
                 onClick={handleSingout}
@@ -85,10 +85,10 @@ const Navbar = () => {
           user ?
             <div className="lg:flex justify-center gap-x-2 items-center hidden">
               <p className="hover:text-indigo-500 text-2xl font-poppins font-medium transition-all duration-700 hover:scale-105">Hello, {user.displayName}</p>
-              <div className="flex  items-center relative">
+              <NavLink to='/borrowedbook' className="flex hover:scale-105 transition-all duration-300 items-center relative">
                 <span className="text-2xl cursor-pointer"><FaCartPlus></FaCartPlus></span>
                 <span className="absolute left-5 bottom-3  font-poppins">{borrowedBooks?.length}+</span>
-              </div>
+              </NavLink>
             </div>
             :
             <div className="lg:flex font-montserrat font-semibold text-xl items-center justify-center gap-x-3 hidden">

@@ -43,7 +43,7 @@ const UpdateBooks = () => {
     console.log(updatedBook);
 
     //send books to server
-    fetch(`http://localhost:5000/api/v1/addedBooks/${_id}`, {
+    fetch(`https://safkat-live-server-side.vercel.app/api/v1/addedBooks/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'

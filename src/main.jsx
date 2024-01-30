@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         path: "categorybooks/:id",
         element: <CategoryBooks></CategoryBooks>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/bookCollection/${params.id}`),
+          fetch(`https://safkat-live-server-side.vercel.app/api/v1/bookCollection/${params.id}`),
       },
       {
         path: "singlebooks/:id",
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
           <SingleBooks></SingleBooks>
         </PrivateRoute>,
 
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/addedBooks/${params.id}`)
+        loader: ({ params }) => fetch(`https://safkat-live-server-side.vercel.app/api/v1/addedBooks/${params.id}`)
       },
       {
         path: 'allbooks',
@@ -60,12 +60,12 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <UpdateBooks></UpdateBooks>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/addedBooks/${params.id}`)
+        loader: ({ params }) => fetch(`https://safkat-live-server-side.vercel.app/api/v1/addedBooks/${params.id}`)
       },
       {
         path: 'readbook/:id',
         element: <ReadBooks></ReadBooks>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/addedBooks/${params.id}`)
+        loader: ({ params }) => fetch(`https://safkat-live-server-side.vercel.app/api/v1/addedBooks/${params.id}`)
 
       },
       {
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
       {
         path: '/read-book/:id',
         element: <ShowBorrowedReadBook></ShowBorrowedReadBook>,
-        loader: ({ params }) => fetch(`http://localhost:5000/api/v1/borrowedbooks/${params.id}`)
+        loader: ({ params }) => fetch(`https://safkat-live-server-side.vercel.app/api/v1/borrowedbooks/${params.id}`)
 
 
       }
