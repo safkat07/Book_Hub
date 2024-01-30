@@ -7,12 +7,15 @@ import { IoLogoTwitter } from "react-icons/io";
 import { FaInstagram } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { FaLinkedin } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 
 
 
 
 import swal from "sweetalert";
+import UseBorrowedBooks from "../../Hooks/UseBorrowedBooks/UseBorrowedBooks";
 const Navbar = () => {
+  const [borrowedBooks] = UseBorrowedBooks()
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -53,24 +56,25 @@ const Navbar = () => {
             <NavLink to='/allbooks' className={({ isActive }) =>
               isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
             }>All Books </NavLink>
-            <a href="#categories" className={({ isActive }) =>
-              isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"}>
-              Categories
-            </a>
-            <NavLink to='/contact' className={({ isActive }) =>
+            <NavLink to='/addbooks' className={({ isActive }) =>
               isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
-            }>Contacts </NavLink>
+            }>Add Books</NavLink>
+            <NavLink to='/borrowedbook' className={({ isActive }) =>
+              isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
+            }>Borrowed Books </NavLink>
             {
-              user ? <li 
-              onClick={handleSingout}
-              className="hover:text-indigo-500 cursor-pointer  transition-all duration-700 hover:scale-105"
+              user ? <li
+                onClick={handleSingout}
+                className="hover:text-indigo-500 cursor-pointer  transition-all duration-700 hover:scale-105"
 
               >LogOut</li>
+
                 :
                 <NavLink to='/login' className={({ isActive }) =>
                   isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
                 }>Login </NavLink>
             }
+
 
 
           </ul>
@@ -79,8 +83,12 @@ const Navbar = () => {
         {/* Social Icons */}
         {
           user ?
-            <div className="lg:block hidden">
+            <div className="lg:flex justify-center gap-x-2 items-center hidden">
               <p className="hover:text-indigo-500 text-2xl font-poppins font-medium transition-all duration-700 hover:scale-105">Hello, {user.displayName}</p>
+              <div className="flex items-center relative">
+                <span className="text-2xl cursor-pointer"><FaCartPlus></FaCartPlus></span>
+                <span className="absolute left-5 bottom-3  font-poppins">{borrowedBooks?.length}+</span>
+              </div>
             </div>
             :
             <div className="lg:flex font-montserrat font-semibold text-xl items-center justify-center gap-x-3 hidden">
@@ -101,9 +109,6 @@ const Navbar = () => {
       </div>
 
     </nav >
-    // <nav>
-
-    // </nav>
   );
 };
 

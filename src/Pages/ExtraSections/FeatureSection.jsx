@@ -26,7 +26,7 @@ const FeatureSection = () => {
       <p className="lg:text-7xl md:text-4xl text-3xl font-bold bg-gradient-to-tr from-indigo-400 via-red-300 to-sky-400 text-transparent bg-clip-text  text-center">
         Best Books
       </p>
-      <p className="text-center font-poppins my-2  w-1/2 m-auto" >Explore a curated collection of the best books, where each page promises an unforgettable journey through timeless literary treasures</p>
+      <p className="text-center font-poppins my-2 md:px-0 px-5 md:w-1/2 m-auto" >Explore a curated collection of the best books, where each page promises an unforgettable journey through timeless literary treasures</p>
       <div>
         {
           isLoading ? <div className="flex my-10 justify-center items-center ">

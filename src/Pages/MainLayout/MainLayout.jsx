@@ -14,10 +14,10 @@ const MainLayout = () => {
             <div>
                 <Navbar></Navbar>
             </div>
-            <div className="">
+            <div className="min-h-[65vh]">
                 <Outlet></Outlet>
             </div>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
 
         </div>
     );

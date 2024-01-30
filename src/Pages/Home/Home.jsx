@@ -9,9 +9,12 @@ import { useQuery } from "react-query";
 import Loader from "../../Components/Useable/Loader/Loader";
 import HeadingText from "../../Components/Useable/HeadingText/HeadingText";
 import SeeByCategory from "../ExtraSections/SeeByCategory/SeeByCategory";
+import AboutUS from "../ExtraSections/AboutUS/AboutUS";
+import UserReview from "../ExtraSections/UserReview/UserReview";
 
 const Home = () => {
   const baseURL = UseAxiosBaseURL()
+  
   const { isPending, status, isError, error, data: bookCollection } = useQuery({
     queryKey: ['BookCollection'],
     queryFn: async () => {
@@ -19,6 +22,7 @@ const Home = () => {
       return res.data
     }
   })
+
   if (isPending) {
     return <div className="flex justify-center items-center">
       <Loader></Loader>
@@ -34,8 +38,9 @@ const Home = () => {
         <Banner></Banner>
       </div>
 
+      <AboutUS></AboutUS>
 
-      <p className="lg:text-6xl md:text-4xl text-3xl font-bold bg-gradient-to-tr from-indigo-400 via-red-300 to-sky-400 text-transparent bg-clip-text xl:mt-36 lg:my-24 md:mt-40 md:mb-10  mt-24 mb-10 text-center">
+      <p className="lg:text-6xl md:text-4xl text-3xl font-bold bg-gradient-to-tr from-indigo-400 via-red-300 to-sky-400 text-transparent bg-clip-text xl:mt-20 lg:my-16 md:mt-10 md:mb-10  mt-24 mb-10 text-center">
         Book Categories
       </p>
 
@@ -48,6 +53,7 @@ const Home = () => {
       }
       <FeatureSection></FeatureSection>
       <SeeByCategory></SeeByCategory>
+      <UserReview></UserReview>
       {/* <BookOfTheDaySection></BookOfTheDaySection> */}
     </div>
   );

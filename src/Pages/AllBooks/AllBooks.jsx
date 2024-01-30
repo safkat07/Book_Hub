@@ -156,7 +156,7 @@ const AllBooks = () => {
           </div>
           {/* book categories */}
           <div>
-            <p className="ml-2  my-4 font-poppins font-medium mb-2">Filter By Available Books</p>
+            <p className="ml-2  my-4 font-poppins font-medium mb-2">Filter By Book Genre</p>
             <select
               id="filterDropdown"
               value={selectedCategory}

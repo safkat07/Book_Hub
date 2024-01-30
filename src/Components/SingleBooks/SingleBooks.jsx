@@ -1,18 +1,21 @@
-import { Link, useLoaderData } from "react-router-dom";
-import Rating from "react-rating";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import Swal from "sweetalert2";
+import React, { useContext, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import Rating from 'react-rating';
+import Swal from 'sweetalert2';
+import UseAxiosBaseURL from '../../Hooks/UseAxiosBaseURL/UseAxiosBaseURL';
+import UseBorrowedBooks from '../../Hooks/UseBorrowedBooks/UseBorrowedBooks';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const SingleBooks = () => {
   const { user } = useContext(AuthContext);
-
+  const baseURL = UseAxiosBaseURL();
+  const [borrowedBooks, refetch] = UseBorrowedBooks();
   const singleBook = useLoaderData();
   const {
     bookName,
     authorName,
     _id,
-    quantity, // corrected from "quanity"
+    quantity,
     bookCategory,
     description,
     rating,
@@ -20,97 +23,64 @@ const SingleBooks = () => {
   } = singleBook;
 
   // State variables
-  const [bookQuantity, setBookQuantity] = useState(quantity); // corrected from "quanity"
-  const [isBorrowButtonDisabled, setIsBorrowButtonDisabled] = useState(false);
+  const [bookQuantity, setBookQuantity] = useState(quantity);
   const [alreadyBorrowed, setAlreadyBorrowed] = useState(true);
 
   const handleBorrowBook = (e) => {
     e.preventDefault();
     const form = e.target;
     const borrowedUserName = form.borrowedUserName.value;
-    const borrwoedUserEmail = form.borrwoedUserEmail.value;
+    const borrowedUserEmail = form.borrowedUserEmail.value;
     const userReturnDate = form.userReturnDate.value;
     const userBorrowDate = form.userBorrowDate.value;
 
-    // Validate and update book quantity
     if (bookQuantity > 0) {
-      setIsBorrowButtonDisabled(bookQuantity - 1 === 0);
+      setBookQuantity(bookQuantity - 1);
+      setAlreadyBorrowed(false); // Assuming the borrow action succeeded
     }
 
     const borrowBookByUser = {
       bookName,
       authorName,
-      status: "borrowed",
+      status: 'borrowed',
       bookCategory,
       description,
       rating,
       photo,
       borrowedUserName,
-      borrwoedUserEmail,
+      borrowedUserEmail,
       userBorrowDate,
       userReturnDate,
     };
 
-    const updatedQuantity = {
-      quantity: bookQuantity,
-    };
-
-    // Add 'borrowBookByUser' to the Borrowed Books list (you should have a state or context for that)
-
-    console.log(borrowBookByUser);
-
-    console.log(bookQuantity);
-    if (!alreadyBorrowed) {
-      Swal.fire({
-        title: "Already Borrowed.",
-        width: 600,
-        padding: "3em",
-        color: "#FF000080",
-        
-        backdrop: `
-          rgba(0,0,123,0.4)
-          url("/images/nyan-cat.gif")
-          left top
-          no-repeat
-        `,
-      });
-      return;
-    }
-
-    // Post 'borrowBookByUser' to the server
-    fetch("http://localhost:5000/api/v1/borrowedbooks", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(borrowBookByUser),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
+    baseURL
+      .post('api/v1/borrowedbooks', borrowBookByUser)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
           Swal.fire({
-            title: "Success!",
-            text: "Book Added Successfully",
-            icon: "success",
-            confirmButtonText: "Cool",
+            title: 'Success!',
+            text: 'Book Added Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool',
           });
+          refetch(); // Trigger refetch after successful borrow
         }
-        setAlreadyBorrowed(false);
+      })
+      .catch((error) => {
+        console.error('Error borrowing book:', error);
+        // Handle error, display error message, etc.
       });
 
-    // Update the quantity of the book
-    fetch(`http://localhost:5000/api/v1/addedBooks/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedQuantity),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // Handle success or show a Swal alert here
+    baseURL
+      .patch(`api/v1/addedBooks/${_id}`, { quantity: quantity - 1 })
+      .then((res) => {
+        console.log(res.data);
+        refetch(); // Trigger refetch after successful borrow
+      })
+      .catch((error) => {
+        console.error('Error updating book quantity:', error);
+        // Handle error, display error message, etc.
       });
   };
 
@@ -137,8 +107,8 @@ const SingleBooks = () => {
           <div className="flex gap-5">
             <button
               className="btn  bg-orange-500 hover:rounded-full text-white"
-              onClick={() => document.getElementById("my_modal_5").showModal()}
-              // disabled={isBorrowButtonDisabled || bookQuantity == 0}
+              onClick={() => document.getElementById('my_modal_5').showModal()}
+            // disabled={isBorrowButtonDisabled || bookQuantity == 0}
             >
               Borrow Book
             </button>
@@ -163,7 +133,7 @@ const SingleBooks = () => {
                   </label>
                   <input
                     type="text"
-                    name="borrwoedUserEmail"
+                    name="borrowedUserEmail"
                     defaultValue={user?.email}
                     placeholder="Email"
                     className="input input-bordered w-full max-w-xs"
@@ -194,14 +164,11 @@ const SingleBooks = () => {
                   />
 
                   <input
-                    onClick={() => {
-                      setBookQuantity(bookQuantity - 1);
-                    }}
                     type="submit"
                     className={
-                      bookQuantity == 0
-                        ? "btn mt-5 btn-disabled"
-                        : "btn mt-5 btn-success"
+                      bookQuantity === 0
+                        ? 'btn mt-5 btn-disabled'
+                        : 'btn mt-5 btn-success'
                     }
                     value="Submit"
                   />

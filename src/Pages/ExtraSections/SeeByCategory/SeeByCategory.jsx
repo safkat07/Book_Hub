@@ -16,7 +16,7 @@ const SeeByCategory = () => {
     return (
         <section className='my-16'>
             <HeadingText headText={"Popular Books"}></HeadingText>
-            <p className="text-center font-poppins my-2  w-1/2 m-auto" >Discover bestselling and timeless literary treasures in our popular books section – where every page turns into an unforgettable journey</p>
+            <p className="text-center font-poppins my-2 px-5 md:w-1/2 m-auto" >Discover bestselling and timeless literary treasures in our popular books section – where every page turns into an unforgettable journey</p>
             <div className='font-poppins  mt-5'>
                 <div className=''>
                     <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

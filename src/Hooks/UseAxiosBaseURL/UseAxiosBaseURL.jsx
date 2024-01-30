@@ -7,4 +7,4 @@ const UseAxiosBaseURL = () => {
     return AxiosBaseURL
 };
 
-export default UseAxiosBaseURL;
+export default UseAxiosBaseURL
