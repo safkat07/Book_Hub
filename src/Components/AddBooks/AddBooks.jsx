@@ -31,7 +31,7 @@ const AddBooks = () => {
     console.log(newBook);
 
     //send books to server
-    fetch('https://safkat-live-server-side.vercel.app/api/v1/addedBooks',
+    fetch('http://localhost:5000/api/v1/addedBooks',
       {
         credentials: true,
         method: 'POST',

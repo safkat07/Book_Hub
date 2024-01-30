@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosBaseURL = axios.create({
-    baseURL: 'https://safkat-live-server-side.vercel.app/'
+    baseURL: 'http://localhost:5000/'
 })
 const UseAxiosBaseURL = () => {
     return AxiosBaseURL

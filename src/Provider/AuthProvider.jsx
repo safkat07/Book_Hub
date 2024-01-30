@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
       //ifuser exist theb issue a token
       if (Currentuser) {
         axios
-          .post("https://safkat-live-server-side.vercel.app/jwt", loggedUser, {
+          .post("http://localhost:5000/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
           });
       }
       else {
-        axios.post('https://safkat-live-server-side.vercel.app/logout', loggedUser, {
+        axios.post('http://localhost:5000/logout', loggedUser, {
           withCredentials: true
         })
         .then( res => {

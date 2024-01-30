@@ -11,7 +11,7 @@ const CategoryBooks = () => {
   const { categoryName } = booksCollection;
 
   useEffect(() => {
-    fetch("https://safkat-live-server-side.vercel.app/api/v1/addedBooks")
+    fetch("http://localhost:5000/api/v1/addedBooks")
       .then((res) => res.json())
       .then((data) => {
         const filterBooks = data.filter(

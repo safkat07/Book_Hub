@@ -15,7 +15,7 @@ const AllBooks = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("all")
   const [selectedCategory, setSelectedCategory] = useState("all")
 
-  const url = "https://safkat-live-server-side.vercel.app/api/v1/addedBooks";
+  const url = "http://localhost:5000/api/v1/addedBooks";
 
   useEffect(() => {
     fetch(url)
