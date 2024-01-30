@@ -43,4 +43,4 @@ const ShowAllBooks = ({ book }) => {
   );
 };
 
-export default ShowAllBooks;
+export default ShowAllBooks

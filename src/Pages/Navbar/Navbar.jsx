@@ -85,7 +85,7 @@ const Navbar = () => {
           user ?
             <div className="lg:flex justify-center gap-x-2 items-center hidden">
               <p className="hover:text-indigo-500 text-2xl font-poppins font-medium transition-all duration-700 hover:scale-105">Hello, {user.displayName}</p>
-              <div className="flex items-center relative">
+              <div className="flex  items-center relative">
                 <span className="text-2xl cursor-pointer"><FaCartPlus></FaCartPlus></span>
                 <span className="absolute left-5 bottom-3  font-poppins">{borrowedBooks?.length}+</span>
               </div>

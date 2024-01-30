@@ -32,16 +32,12 @@ const BorrowedBooks = () => {
       <HeadingText headText={"Borrowed Bookss"}></HeadingText>
 
       <div>
-        {isPending ? (
-          <div className="flex justify-center mt-52">
-            <span className="loading flex loading-spinner loading-lg"></span>
-          </div>
-        ) : borrowedBooks?.length === 0 ? (
+        {borrowedBooks?.length === 0 ? (
           <div className="text-center mt-8"><p className="text-3xl font-montserrat font-medium">
             No books borrowed
           </p></div>
         ) : (
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+          <div className="flex flex-wrap justify-center items-center gap-x-8">
             {borrowedBooks?.map((book) => (
               <ShowBorrowedBooks book={book} key={book.id}></ShowBorrowedBooks>
             ))}
