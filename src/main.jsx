@@ -19,6 +19,7 @@ import ShowBorrowedReadBook from "./Components/BorrowedBooks/ShowBorrowedReadBoo
 import PrivateRoute from "./Provider/PrivateRoute.jsx";
 import BorrowedBooks from "./Components/BorrowedBooks/BorrowedBooks.jsx";
 import { QueryClient, QueryClientProvider } from "react-query";
+import UserBookCollections from "./Components/UserBookCollections/UserBookCollections.jsx";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
       {
         path: 'allbooks',
         element: <AllBooks></AllBooks>,
+
+      },
+      {
+        path: 'usersbook',
+        element: <UserBookCollections></UserBookCollections>
 
       },
       {

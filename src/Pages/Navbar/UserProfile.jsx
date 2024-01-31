@@ -36,10 +36,10 @@ const UserProfile = () => {
                     <p className='text-center text-lg mt-3 font-poppins font-medium'>{user.displayName}</p>
                 </div>
                 <div className='text-left flex justify-start flex-col gap-y-2 px-10 mt-7 '>
-                    <NavLink className="hover:text-gray-400 transition-all duration-500">
+                    <NavLink to='/addbooks' className="hover:text-gray-400 transition-all duration-500">
                         Add New Book
                     </NavLink>
-                    <NavLink className="hover:text-gray-400 transition-all duration-500">
+                    <NavLink to='/usersbook' className="hover:text-gray-400 transition-all duration-500">
                         Uploaded Books
                     </NavLink>
 
