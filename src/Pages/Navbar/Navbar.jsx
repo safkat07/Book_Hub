@@ -15,6 +15,7 @@ import { FaCartPlus } from "react-icons/fa";
 import swal from "sweetalert";
 import UseBorrowedBooks from "../../Hooks/UseBorrowedBooks/UseBorrowedBooks";
 import Headroom from "react-headroom";
+import UserProfile from "./UserProfile";
 const Navbar = () => {
   const [borrowedBooks] = UseBorrowedBooks()
   const [theme, setTheme] = useState(
@@ -58,7 +59,7 @@ const Navbar = () => {
 
   return (
     <Headroom className="">
-      <nav className={scrolled ? '  text-black backdrop-blur-md  2xl:px-16 px-5 rounded-b-xl   mx-auto' : 'text-black  2xl:px-16  px-5 mx-auto'}>
+      <nav className={scrolled ? '  text-black backdrop-blur-md py-2 transition-all duration-700  2xl:px-16 px-5 rounded-b-xl   mx-auto' : 'text-black py-2 transition-all duration-700 2xl:px-16  px-5 mx-auto'}>
         <div className="flex justify-between items-center">
           {/* icons div */}
           <NavLink to='/'>
@@ -80,18 +81,12 @@ const Navbar = () => {
               {/* <NavLink to='/borrowedbook' className={({ isActive }) =>
             isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
           }>Borrowed Books </NavLink> */}
-              {
-                user ? <li
-                  onClick={handleSingout}
-                  className="hover:text-indigo-500 cursor-pointer  transition-all duration-700 hover:scale-105"
-
-                >LogOut</li>
-
-                  :
-                  <NavLink to='/login' className={({ isActive }) =>
-                    isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
-                  }>Login </NavLink>
-              }
+              {/* {
+                !user &&
+                <NavLink to='/login' className={({ isActive }) =>
+                  isActive ? "hover:text-indigo-500  transition-all duration-700 scale-110 text-indigo-500" : "hover:text-indigo-500  transition-all duration-700 hover:scale-105"
+                }>Login </NavLink>
+              } */}
             </ul>
           </div>
           {/* Navigation Div */}
@@ -99,11 +94,12 @@ const Navbar = () => {
           {
             user ?
               <div className="lg:flex justify-center gap-x-2 items-center hidden">
-                <p className="hover:text-indigo-500 text-2xl font-poppins font-medium transition-all duration-700 hover:scale-105">Hello, {user.displayName}</p>
+                {/* <p className="hover:text-indigo-500 text-2xl font-poppins font-medium transition-all duration-700 hover:scale-105">Hello, {user.displayName}</p>
                 <NavLink to='/borrowedbook' className="flex hover:scale-105 transition-all duration-300 items-center relative">
                   <span className="text-2xl cursor-pointer"><FaCartPlus /></span>
                   <span className="absolute left-5 bottom-3  font-poppins">{borrowedBooks?.length}+</span>
-                </NavLink>
+                </NavLink> */}
+                <UserProfile></UserProfile>
               </div>
               :
               <div className="lg:flex font-montserrat font-semibold text-xl items-center justify-center gap-x-3 hidden">
